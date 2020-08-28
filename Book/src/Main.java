@@ -109,7 +109,7 @@ public class Main {
         System.out.print("请选择： ");
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
-        switch(choice){
+        switch(choice) {
             case 0:
                 //借出排行榜
                 list();
