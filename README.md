@@ -10,7 +10,8 @@ Java 初学集合
 | 1 | [Book](https://github.com/microlong666/JavaStarterCollection/tree/master/Book) | 图书借阅管理系统 | 数组综合 |
 | 2 | [OrderFood](https://github.com/microlong666/JavaStarterCollection/tree/master/OrderFood) | 订餐系统 | 数组 |
 | 3 | [BankCard](https://github.com/microlong666/JavaStarterCollection/tree/master/BankCard) | 银行卡充值消费 | 继承 |
-| 4 | ... | ... | ... |
+| 4 | [PetShop](https://github.com/microlong666/JavaStarterCollection/tree/master/PetShop) | 宠物领养、喂食、陪玩 | 多态 |
+| 5 | ... | ... | ... |
 
 *待补充*
 
