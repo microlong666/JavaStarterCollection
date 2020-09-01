@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08d10c8a-61a7-45ec-b6ce-ed8966470c4d" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/BankCard/BankCard.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,17 +40,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Main" />
@@ -70,7 +58,10 @@
       <workItem from="1598532403355" duration="5165000" />
       <workItem from="1598537619586" duration="504000" />
       <workItem from="1598542024629" duration="1465000" />
-      <workItem from="1598580859300" duration="10357000" />
+      <workItem from="1598580859300" duration="10967000" />
+      <workItem from="1598930056491" duration="740000" />
+      <workItem from="1598940094761" duration="1214000" />
+      <workItem from="1598948396207" duration="330000" />
     </task>
     <task id="LOCAL-00001" summary="update README.md">
       <created>1598586644659</created>
@@ -107,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1598624246973</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add BankCard">
+      <created>1598624453959</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1598624453959</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update README.md">
+      <created>1598948727379</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1598948727379</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,9 +120,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add OrderFood" />
-    <MESSAGE value="update README.md" />
     <MESSAGE value="update Book" />
-    <option name="LAST_COMMIT_MESSAGE" value="update Book" />
+    <MESSAGE value="add BankCard" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -129,10 +135,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="147" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1598532294714" />
-    <state x="362" y="0" key="CommitChangelistDialog2" timestamp="1598624246434">
+    <state x="362" y="0" key="CommitChangelistDialog2" timestamp="1598624453521">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="362" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598624246434" />
+    <state x="362" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598624453521" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598581147862">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -157,14 +163,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598538074773" />
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1598587214107">
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1598624456177">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598587214107" />
-    <state x="322" y="22" key="new project wizard" timestamp="1598614124258">
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598624456177" />
+    <state x="322" y="22" key="new project wizard" timestamp="1598940066506">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="322" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1598614124258" />
+    <state x="322" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1598940066506" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1598537264768">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
