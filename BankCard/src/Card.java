@@ -67,11 +67,11 @@ public class Card {
 
     /**
      * 	定义函数 consume()，实现消费的功能，
-     *  参数代表消费金额，消费金额大于0，返回true，
+     *  参数代表消费金额，消费金额大于0且不多于余额，返回true，
      *  代表消费成功，否则返回false，代表消费失败。
      */
     public boolean consume(double amount) {
-        if(amount > 0) {
+        if(amount > 0 && this.money >= amount) {
             this.money = this.money - amount;
             System.out.println("\n余额：" + money);
             return true;
