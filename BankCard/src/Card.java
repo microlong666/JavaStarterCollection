@@ -25,7 +25,7 @@ public class Card {
 
     private double money;
 
-    private String cardID;
+    private String cardId;
 
     public Card() {
 
@@ -38,14 +38,14 @@ public class Card {
      *  money(余额)、
      *  cardID(卡号，8位0-9的随机数构成，非0开头)
      */
-    public Card(String company, double money, String cardID) {
+    public Card(String company, double money, String cardId) {
         this.company = company;
         this.money = money;
-        this.cardID = cardID;
+        this.cardId = cardId;
     }
 
     public void print() {
-        String str = this.company +", "+ this.money +", "+ this.cardID;
+        String str = this.company +", "+ this.money +", "+ this.cardId;
         System.out.println(str);
     }
 
@@ -56,7 +56,7 @@ public class Card {
      *  否则返回false，代表充值失败。
      */
     public boolean deposit(double amount) {
-        if(amount > 0) {
+        if (amount > 0) {
             this.money = this.money + amount;
             System.out.println("\n余额：" + money);
             return true;
@@ -71,7 +71,7 @@ public class Card {
      *  代表消费成功，否则返回false，代表消费失败。
      */
     public boolean consume(double amount) {
-        if(amount > 0 && this.money >= amount) {
+        if (amount > 0 && this.money >= amount) {
             this.money = this.money - amount;
             System.out.println("\n余额：" + money);
             return true;
@@ -96,13 +96,13 @@ public class Card {
         System.out.print("Card类余额：");
         String c_money = sc.nextLine();
         System.out.print("Card类卡号：");
-        String c_cardID = sc.nextLine();
+        String c_cardId = sc.nextLine();
         System.out.print("BankCard类发卡机构：");
         String b_company = sc.nextLine();
         System.out.print("BankCard类余额：");
         String b_money = sc.nextLine();
         System.out.print("BankCard类卡号：");
-        String b_cardID = sc.nextLine();
+        String b_cardId = sc.nextLine();
 
         Card card = new Card();
 
@@ -110,7 +110,7 @@ public class Card {
          * 	根据输入的前三个数据
          *  初始化Card类对象的成员变量
          */
-        card = new Card(c_company,Double.parseDouble(c_money),c_cardID);
+        card = new Card(c_company,Double.parseDouble(c_money),c_cardId);
         // 调用print方法输出结果
         card.print();
         BankCard bankCard = new BankCard();
@@ -119,22 +119,22 @@ public class Card {
          * 	根据输入的后三个数据
          *  初始化BankCard类对象的成员变量
          */
-        bankCard = new BankCard(b_company,Double.parseDouble(b_money),b_cardID);
+        bankCard = new BankCard(b_company,Double.parseDouble(b_money),b_cardId);
 
         // 调用print方法输出结果
         bankCard.print();
         
         boolean result;
         int choice = -1;
-        while(choice != 0) {
+        while (choice != 0) {
             System.out.println("\n对Card类操作：\n1. 充值\n2. 消费\n0. 退出");
             System.out.print("请选择： ");
             Scanner input = new Scanner(System.in);
             choice = input.nextInt();
-            switch(choice) {
-                /**
-                 *  实例化Card类的对象，按照次序进行充值和消费操作，
-                 * 	打印输出，充值/消费 是否成功(true/false)。
+            switch (choice) {
+                /*
+                   实例化Card类的对象，按照次序进行充值和消费操作，
+                   打印输出，充值/消费 是否成功(true/false)。
                  */
                 case 0:
                     break;
@@ -179,7 +179,7 @@ class BankCard extends Card {
      * 	在BankCard类构造函数中，
      * 	使用super关键字初始化，父类属性。
      */
-    public BankCard(String company, double money, String cardID) {
-        super(company, money, cardID);
+    public BankCard(String company, double money, String cardId) {
+        super(company, money, cardId);
     }
 }
