@@ -7,9 +7,16 @@ import java.util.*;
  */
 
 public class Main {
+
+    public static void main(String[] args) {
+        Main dm = new Main();
+        dm.initial();
+        dm.startMenu();
+    }
+
     public static class BookSet {
-        String[] name = new String[50];   //数组1存储图书名称数组
-        int[] state = new int[50];        //数组2存储图书借出状态：0已借出/1可借
+        String[] name = new String[50];     //数组1存储图书名称数组
+        int[] state = new int[50];          //数组2存储图书借出状态：0已借出/1可借
         String[] date = new String[50];     //数组3存储图书借出日期
         int[] count = new int[50];          //借出次数
         public String[] getName() {
@@ -73,7 +80,6 @@ public class Main {
      * 初始三个图书
      */
     public void initial() {
-
         book.name[0] = "数据结构";
         book.state[0] = 0;
         book.date[0] = "2018-7-1";
@@ -166,15 +172,15 @@ public class Main {
         String[] newName = new String[50];
         int[] newCount = new int[50];
 
-        for(int k=0;k<book.name.length;k++) {
+        for (int k = 0; k < book.name.length; k++) {
             newName[k] = book.name[k];
             newCount[k] = book.count[k];
         }
 
         //利用冒泡排序算法进行排序
-        for(int i = 0;i < newName.length; i++) {
-            for(int j = i + 1; j < newName.length; j++) {
-                if(newCount[i] > newCount[j]){
+        for (int i = 0;i < newName.length; i++) {
+            for (int j = i + 1; j < newName.length; j++) {
+                if (newCount[i] > newCount[j]) {
                     //通过数组操作完成顺序交替
                     int tempc = newCount[i];
                     newCount[i] = newCount[j];
@@ -189,7 +195,7 @@ public class Main {
         System.out.println("**************************");
         System.out.println("次数\t名称");
         //显示排行榜信息
-        for(int i = newName.length-1; i >= 0; i--) {
+        for (int i = newName.length - 1; i >= 0; i--) {
             if(newName[i] != null) {
                 System.out.println(newCount[i]+"\t<<"+ newName[i]+ ">>" );
             }
@@ -251,9 +257,9 @@ public class Main {
      * 追加图书
      */
     public BookSet addBook(String name) {
-        for(int i = 0; i < book.name.length; i++) {
+        for (int i = 0; i < book.name.length; i++) {
             //查询最后一个空位置插入
-            if(book.name[i] == null ) {
+            if (book.name[i] == null ) {
                 book.name[i] = name;
                 //更改新增的图书可借状态
                 book.state[i] = 1;
@@ -291,13 +297,13 @@ public class Main {
         //标识删除成功与否
         boolean flag = false;
         //遍历数组，查找匹配信息
-        for(int i = 0 ; i < book.name.length; i++){
+        for (int i = 0 ; i < book.name.length; i++){
             //查找到，每个元素前移一位
             //判断书籍是否满足删除条件
-            if(book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 1) {
+            if (book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 1) {
                 //最后一个不为空的元素置空
                 int j = i;
-                while(book.name[j+1] != null) {
+                while (book.name[j+1] != null) {
                     book.name[j] = book.name[j+1];
                     book.state[j] = book.state[j+1];
                     book.date[j] = book.date[j+1];
@@ -309,7 +315,7 @@ public class Main {
                 //置位，表示删除成功
                 flag = true;
                 break;
-            } else if(book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 0) {
+            } else if (book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 0) {
                 //判断查询到的书籍已被借出
                 System.out.println("《"+name+"》为借出状态，不能删除！");
                 //置位
@@ -317,7 +323,7 @@ public class Main {
                 break;
             }
         }
-        if(!flag){
+        if (!flag){
             System.out.println("没有找到匹配信息！");
         }
         System.out.println("**************************");
@@ -345,19 +351,19 @@ public class Main {
      * 借出图书核心方法
      */
     public void lendBook(String want, String lendDate) {
-        for(int i = 0; i < book.name.length; i++){
-            if(book.name[i] == null) {
+        for (int i = 0; i < book.name.length; i++){
+            if (book.name[i] == null) {
                 //无匹配
                 System.out.println("没有找到匹配信息！");
                 break;
-            } else if(book.name[i].equalsIgnoreCase(want) && book.state[i] == 1) {
+            } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 1) {
                 //找到匹配可借
                 book.state[i] = 0;
                 book.date[i] = lendDate;
                 System.out.println("借出《"+want+"》成功!");
                 book.count[i]++;
                 break;
-            } else if(book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
+            } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
                 //找到匹配已被借出
                 System.out.println("《"+want+"》已被借出！");
                 break;
@@ -393,7 +399,7 @@ public class Main {
                 //无匹配
                 System.out.println("没有找到匹配信息！");
                 break;
-            } else if(book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
+            } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
                 //找到匹配对应书籍
 
                 /*
@@ -423,7 +429,7 @@ public class Main {
                 System.out.println("归还日期为：" + reDate);
                 System.out.println("应付租金（元）：" + loan);
                 break;
-            } else if(book.name[i].equals(want) && book.state[i] == 1) {
+            } else if (book.name[i].equals(want) && book.state[i] == 1) {
                 //找到匹配但没有借出
                 System.out.println("该图书没有被借出！无法进行归还操作。");
                 break;
@@ -449,11 +455,5 @@ public class Main {
             e.printStackTrace();
         }
         return charge;
-    }
-
-    public static void main(String[] args) {
-        Main dm = new Main();
-        dm.initial();
-        dm.startMenu();
     }
 }
