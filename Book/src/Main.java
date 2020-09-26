@@ -14,53 +14,35 @@ public class Main {
         dm.startMenu();
     }
 
-    public static class BookSet {
-        String[] name = new String[50];     //数组1存储图书名称数组
-        int[] state = new int[50];          //数组2存储图书借出状态：0已借出/1可借
-        String[] date = new String[50];     //数组3存储图书借出日期
-        int[] count = new int[50];          //借出次数
-        public String[] getName() {
-            return name;
-        }
-        public void setName(String[] name) {
-            this.name = name;
-        }
-        public int[] getState() {
-            return state;
-        }
-        public void setState(int[] state) {
-            this.state = state;
-        }
-        public String[] getDate() {
-            return date;
-        }
-        public void setDate(String[] date) {
-            this.date = date;
-        }
-        public int[] getCount() {
-            return count;
-        }
-        public void setCount(int[] count) {
-            this.count = count;
-        }
-    }
-
     /**
-     * 创建图书对象
+     * 创建图书 book 对象
      */
     BookSet book = new BookSet();
+
+    /**
+     * 借出书籍数量
+     */
     private int lendCount = 0;
 
-    //未借出书籍数量
-    private int existCount = 0;
+    /**
+     * 获取借出书籍数量
+     * @return lendCount
+     */
     public int getLendCount() {
         return lendCount;
     }
+
+    /**
+     * 未借出书籍数量
+     */
+    private int existCount = 0;
+
+    /**
+     * 获取未借出书籍数量
+     * @return existCount
+     */
     public int getExistCount() {
         return existCount;
-    }
-    public BookSet getBook() {
-        return book;
     }
 
     /**
@@ -68,10 +50,18 @@ public class Main {
      */
     private long charge;
 
+    /**
+     * 获取租金
+     * @return charge
+     */
     public long getCharge() {
         return charge;
     }
 
+    /**
+     * 设置租金
+     * @param charge 租金
+     */
     public void setCharge(long charge) {
         this.charge = charge;
     }
@@ -117,33 +107,33 @@ public class Main {
         int choice = input.nextInt();
         switch(choice) {
             case 0:
-                //借出排行榜
+                // 借出排行榜
                 list();
                 returnMain();
                 break;
             case 1:
-                //查询图书
+                // 查询图书
                 search();
                 returnMain();
                 break;
             case 2:
-                //新增图书
+                // 新增图书
                 add();
                 break;
             case 3:
-                //删除图书
+                // 删除图书
                 delete();
                 break;
             case 4:
-                //借出图书
+                // 借出图书
                 lend();
                 break;
             case 5:
-                //归还图书
+                // 归还图书
                 returnBook();
                 break;
             case 6:
-                //退出
+                // 退出
                 System.out.println("\n谢谢使用！");
                 break;
             default:
@@ -167,8 +157,8 @@ public class Main {
     /**
      * 借出排行榜
      */
-    public String[] list() {
-        //定义新数组，用来存放排序后图书信息
+    public void list() {
+        // 定义新数组，用来存放排序后图书信息
         String[] newName = new String[50];
         int[] newCount = new int[50];
 
@@ -177,32 +167,31 @@ public class Main {
             newCount[k] = book.count[k];
         }
 
-        //利用冒泡排序算法进行排序
-        for (int i = 0;i < newName.length; i++) {
+        // 利用冒泡排序算法进行排序
+        for (int i = 0; i < newName.length; i++) {
             for (int j = i + 1; j < newName.length; j++) {
                 if (newCount[i] > newCount[j]) {
-                    //通过数组操作完成顺序交替
-                    int tempc = newCount[i];
+                    // 通过数组操作完成顺序交替
+                    int tempCount = newCount[i];
                     newCount[i] = newCount[j];
-                    newCount[j] = tempc;
-                    String tempn = newName[i];
+                    newCount[j] = tempCount;
+                    String tempName = newName[i];
                     newName[i] = newName[j];
-                    newName[j] = tempn;
+                    newName[j] = tempName;
                 }
             }
         }
         System.out.println("---> 排行榜\n");
         System.out.println("**************************");
         System.out.println("次数\t名称");
-        //显示排行榜信息
+        // 显示排行榜信息
         for (int i = newName.length - 1; i >= 0; i--) {
             if(newName[i] != null) {
                 System.out.println(newCount[i]+"\t<<"+ newName[i]+ ">>" );
             }
         }
         System.out.println("**************************");
-        //returnMain();
-        return newName;
+        // returnMain();
     }
 
     /**
@@ -246,7 +235,7 @@ public class Main {
      * 新增图书
      */
     public void add() {
-        //为方便测试，拆分方法为键盘输入方法和核心追加书籍方法
+        // 为方便测试，拆分方法为键盘输入方法和核心追加书籍方法
         String name = getInputData();
         addBook(name);
         System.out.println("**************************");
@@ -255,23 +244,24 @@ public class Main {
 
     /**
      * 追加图书
+     * @param name 书名
      */
-    public BookSet addBook(String name) {
+    public void addBook(String name) {
         for (int i = 0; i < book.name.length; i++) {
-            //查询最后一个空位置插入
+            // 查询最后一个空位置插入
             if (book.name[i] == null ) {
                 book.name[i] = name;
-                //更改新增的图书可借状态
+                // 更改新增的图书可借状态
                 book.state[i] = 1;
                 System.out.println("新增《"+name+"》成功！");
                 break;
             }
         }
-        return book;
     }
 
     /**
      * 键盘输入数据
+     * @return 图书名称
      */
     private String getInputData() {
         Scanner input = new Scanner(System.in);
@@ -285,23 +275,24 @@ public class Main {
     public void delete() {
         System.out.println("---> 删除图书\n");
         String name = getInputData();
-        //为方便测试用例，抽出一个方法
+        // 为方便测试用例，抽出一个方法
         deleteBook(name);
         returnMain();
     }
 
     /**
      * 删除图书核心方法
+     * @param name 待删书名
      */
     public void deleteBook(String name) {
-        //标识删除成功与否
+        // 标识删除成功与否
         boolean flag = false;
-        //遍历数组，查找匹配信息
+        // 遍历数组，查找匹配信息
         for (int i = 0 ; i < book.name.length; i++){
-            //查找到，每个元素前移一位
-            //判断书籍是否满足删除条件
+            // 查找到，每个元素前移一位
+            // 判断书籍是否满足删除条件
             if (book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 1) {
-                //最后一个不为空的元素置空
+                // 最后一个不为空的元素置空
                 int j = i;
                 while (book.name[j+1] != null) {
                     book.name[j] = book.name[j+1];
@@ -312,13 +303,13 @@ public class Main {
                 book.name[j] = null;
                 book.date[j] = null;
                 System.out.println("删除《"+name+"》成功！");
-                //置位，表示删除成功
+                // 置位，表示删除成功
                 flag = true;
                 break;
             } else if (book.name[i] != null && book.name[i].equalsIgnoreCase(name) && book.state[i] == 0) {
-                //判断查询到的书籍已被借出
+                // 判断查询到的书籍已被借出
                 System.out.println("《"+name+"》为借出状态，不能删除！");
-                //置位
+                // 置位
                 flag = true;
                 break;
             }
@@ -336,12 +327,12 @@ public class Main {
         System.out.println("---> 借出图书\n");
         Scanner input = new Scanner(System.in);
         System.out.print("请输入图书名称： ");
-        //要借出的图书名称
+        // 要借出的图书名称
         String want = input.next();
         System.out.print("请输入借出日期（年-月-日）：");
-        //借出日期
+        // 借出日期
         String lendDate = input.next();
-        //为方便测试，抽出方法
+        // 为方便测试，抽出方法
         lendBook(want, lendDate);
         System.out.println("**************************");
         returnMain();
@@ -349,22 +340,24 @@ public class Main {
 
     /**
      * 借出图书核心方法
+     * @param want 待借书名
+     * @param lendDate 借出日期
      */
     public void lendBook(String want, String lendDate) {
         for (int i = 0; i < book.name.length; i++){
             if (book.name[i] == null) {
-                //无匹配
+                // 无匹配
                 System.out.println("没有找到匹配信息！");
                 break;
             } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 1) {
-                //找到匹配可借
+                // 找到匹配可借
                 book.state[i] = 0;
                 book.date[i] = lendDate;
                 System.out.println("借出《"+want+"》成功!");
                 book.count[i]++;
                 break;
             } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
-                //找到匹配已被借出
+                // 找到匹配已被借出
                 System.out.println("《"+want+"》已被借出！");
                 break;
             }
@@ -381,7 +374,7 @@ public class Main {
         String want = input.next();
         System.out.print("请输入归还日期（年-月-日）：");
         String reDate = input.next();
-        //为方便测试，抽出方法
+        // 为方便测试，抽出方法
         returnBook(want, reDate);
         System.out.println("**************************");
         returnMain();
@@ -389,19 +382,20 @@ public class Main {
 
     /**
      * 归还图书并计算租金
+     * @param want 待还书名
+     * @param reDate 归还日期
      */
     public void returnBook(String want, String reDate) {
-        //初始化租金
+        // 初始化租金
         this.setCharge(0);
         long loan;
         for (int i = 0; i < book.name.length; i++) {
+            // 无匹配
             if (book.name[i] == null) {
-                //无匹配
                 System.out.println("没有找到匹配信息！");
                 break;
+                // 找到匹配对应书籍
             } else if (book.name[i].equalsIgnoreCase(want) && book.state[i] == 0) {
-                //找到匹配对应书籍
-
                 /*
                 1.设置为未借出状态
                 2.计算租金
@@ -430,7 +424,7 @@ public class Main {
                 System.out.println("应付租金（元）：" + loan);
                 break;
             } else if (book.name[i].equals(want) && book.state[i] == 1) {
-                //找到匹配但没有借出
+                // 找到匹配但没有借出
                 System.out.println("该图书没有被借出！无法进行归还操作。");
                 break;
             }
